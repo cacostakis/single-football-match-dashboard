@@ -5,8 +5,6 @@ website:
   title: "single-football-match-dashboard"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
       - href: single-football-match-dashboard.qmd
         text: Match Dashboard
 

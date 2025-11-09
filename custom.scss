@@ -1,11 +1,9 @@
 /*-- scss:defaults --*/
-
 // COLORS - Main theme colors
-
 // Primary accent color (buttons, links)
-$primary: #0f2e28;           // Soft violet (primary accent)
+$primary: #34d399;           // Bright green (more visible on dark backgrounds)
 // Secondary accent color
-$secondary: #34d399;         // Bright green (secondary accent)
+$secondary: #0f2e28;         // Deep green (secondary accent)
 // Success state color (green)
 $success: #10b981;           // Emerald green
 // Error/danger state color (red)
@@ -13,8 +11,7 @@ $danger: #f87171;            // Soft red
 // Warning state color (yellow)
 $warning: #fbbf24;           // Amber warning
 // Info state color (light blue)
-$info: #3b0764;              // Light indigo
-
+$info: #60a5fa;              // Light blue (more visible)
 
 // BACKGROUND & TEXT
 $body-bg: #0a1f1a;           // Main background color
@@ -24,39 +21,78 @@ $card-bg: #0f2e28;           // Card/panel background color
 // TYPOGRAPHY
 $font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 $font-size-base: 1rem;       // Base font size (16px typically)
-$headings-color: #0f2e28;    // Color for all headings (h1, h2, etc.)
+$headings-color: #e0e7e5;    // LIGHT headings for dark theme
 
 // SPACING
 $spacer: 1rem;               // Base spacing unit (used for margins/padding)
 
 // BORDERS & ROUNDING
 $border-radius: 0.375rem;    // Roundness of corners (buttons, cards, etc.)
-$border-color: #dee2e6;      // Default border color
+$border-color: #374151;      // Lighter border for dark theme
 
-// SIDEBAR - Deep green with violet accents
+// SIDEBAR - Deep green with light text
 $sidebar-bg: #0a2520;        // Deep green sidebar
 $sidebar-fg: #e0e7e5;        // Light text
 
-// LINKS
-$link-color: $primary;       // Link color (defaults to primary)
-$link-hover-color: darken($primary, 15%);  // Link hover color
+// LINKS - Use bright green for visibility
+$link-color: #34d399;        // Bright green links
+$link-hover-color: #10b981;  // Darker green on hover
 
+// INPUT STYLING
+$input-bg: #1f2937;          // Dark input background
+$input-color: #e0e7e5;       // Light input text
+$input-border-color: #374151; // Input border color
 
 /*-- scss:rules --*/
-
 // CUSTOM RULES - Add specific overrides here
 
-// Example: Make all cards have a subtle shadow
-.card {
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+// Fix sidebar input visibility
+.sidebar .form-control,
+.sidebar .form-select,
+.sidebar input,
+.sidebar select {
+  background-color: #1f2937 !important;
+  color: #e0e7e5 !important;
+  border-color: #374151 !important;
 }
 
-// Example: Customize table appearance
+// Fix sidebar input focus states
+.sidebar .form-control:focus,
+.sidebar .form-select:focus,
+.sidebar input:focus,
+.sidebar select:focus {
+  background-color: #1f2937 !important;
+  color: #e0e7e5 !important;
+  border-color: #34d399 !important;
+  box-shadow: 0 0 0 0.2rem rgba(52, 211, 153, 0.25) !important;
+}
+
+// Fix sidebar labels and text
+.sidebar label,
+.sidebar .form-label,
+.sidebar .input-group-text {
+  color: #e0e7e5 !important;
+}
+
+// Make cards have a subtle shadow
+.card {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+  border-color: #374151;
+}
+
+// Customize table appearance
 .table {
   font-size: 0.9rem;
+  color: #e0e7e5;
 }
 
-// Example: Adjust dashboard sidebar width
+// Adjust dashboard sidebar width
 .sidebar {
   min-width: 250px;
+}
+
+// Fix any remaining dark text issues
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #e0e7e5 !important;
 }
