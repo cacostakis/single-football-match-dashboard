@@ -4,6 +4,8 @@ format:
   dashboard:
     orientation: rows
     logo: "img/R_logo.png"
+execute: 
+  freeze: auto
 ---
 
 
