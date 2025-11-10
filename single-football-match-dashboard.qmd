@@ -269,8 +269,7 @@ widths = c(4, 8)
 ```
 
 ## Attribution
-
-Data provided by [**StatsBomb open-data repository.**](https://github.com/statsbomb/open-data)
+<div style="display: flex; align-items: center; gap: 30px;"> <div>Data provided by [**StatsBomb open-data repository.**](https://github.com/statsbomb/open-data)</div>
 ![StatsBomb logo image](img/statsbomb_logo.png){width="300px"}
 
 # Shooting
