@@ -5,12 +5,14 @@ website:
   title: "single-football-match-dashboard"
   navbar:
     left:
+      - href: index.qmd
+        text: About
       - href: single-football-match-dashboard.qmd
         text: Match Dashboard
 
 format:
   html:
-    theme: [darkly, custom.scss]
+    theme: [custom.scss]
     toc: true
 
 
