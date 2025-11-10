@@ -26,11 +26,22 @@ three_sixty_url <- paste0(base, "three-sixty/", match_id, ".json")
 pitch_L = 120
 pitch_W = 80
 
-events <-
+events_loc <-
   events %>%
+  unnest(cols = c(pass, carry, dribble, shot, interception, duel, foul_committed, foul_won, ball_recovery, goalkeeper),
+         names_sep = "_") %>%
   mutate(
     loc_L = map_dbl(location, ~if(length(.x) == 0) NA_real_ else .x[1]),
     loc_W = map_dbl(location, ~if(length(.x) == 0) NA_real_ else pitch_W-.x[2]),
+    across(.cols = contains("end_location"),
+           .fns = ~map_dbl(.x, ~if(length(.x) == 0) NA_real_ else .x[1]),
+           .names = "{.col}_L"),
+    across(.cols = contains("end_location"),
+           .fns = ~map_dbl(.x, ~if(length(.x) == 0) NA_real_ else pitch_W-.x[2]),
+           .names = "{.col}_W"),
+    across(.cols = contains("end_location"),
+           .fns = ~map_dbl(.x, ~if(length(.x) == 3) .x[3] else NA_real_),
+           .names = "{.col}_H"),
     position_group = case_when(str_detect(position$name, "Back")~"Defender",
                                str_detect(position$name, "Mid")~"Midfielder",
                                str_detect(position$name, "Forward")~"Attacker",
@@ -150,8 +161,8 @@ pass %>%
                  color = pass_outcome_name,
                  shape = pass_outcome_name),
              size = 0.8) +
-  facet_grid(cols = vars(team$name),
-             rows = vars(position_group)) +
+  facet_grid(cols = vars(period),
+             rows = vars(team$name)) +
   scale_color_manual(values = c("green", "red", "gold", "purple", "pink")) +
   scale_shape_manual(values = c(1, 4, 4, 4, 2))
 
